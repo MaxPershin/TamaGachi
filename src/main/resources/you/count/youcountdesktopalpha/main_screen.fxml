@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="875.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="you.count.youcountdesktopalpha.MainScreenController">
+   <children>
+      <Button fx:id="buttonPlay"
+              onAction="#startPlaying" layoutX="234.0" layoutY="777.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="233.0" text="PLAY ME">
+         <font>
+            <Font size="30.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

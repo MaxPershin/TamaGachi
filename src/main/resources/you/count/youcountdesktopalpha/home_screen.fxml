@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="875.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="you.count.youcountdesktopalpha.HomeScreenController">
+   <children>
+      <ImageView fx:id="backgroundHomeScreen" fitHeight="882.0" fitWidth="712.0" layoutX="-2.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mainCharImage" fitHeight="696.0" fitWidth="487.0" layoutX="107.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane layoutX="-5.0" layoutY="761.0" prefHeight="114.0" prefWidth="706.0" style="-fx-background-color: HOTPINK;">
+         <children>
+            <Button mnemonicParsing="false" onAction="#pleaseHero" prefHeight="114.0" prefWidth="120.0" text="ХЛЕСТАТЬ">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button layoutX="120.0" mnemonicParsing="false" onAction="#feedHero" prefHeight="114.0" prefWidth="120.0" text="КОРМИТЬ" />
+            <Button layoutX="466.0" mnemonicParsing="false" onAction="#drinkHero" prefHeight="114.0" prefWidth="120.0" text="ПОИТЬ" />
+            <Button layoutX="586.0" mnemonicParsing="false" prefHeight="114.0" prefWidth="120.0" text="Button" />
+            <Button layoutX="240.0" mnemonicParsing="false" onAction="#startLifeCycle" prefHeight="114.0" prefWidth="228.0" text="START TIMER" />
+            <Button layoutX="586.0" mnemonicParsing="false" onAction="#heroMove" prefHeight="114.0" prefWidth="120.0" text="ДВИГАТЬСЯ" />
+         </children></AnchorPane>
+      <Label alignment="CENTER" layoutX="63.0" layoutY="71.0" prefHeight="40.0" prefWidth="85.0" text="ГОЛОД">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8218323588371277" green="0.8421052694320679" blue="0.23391813039779663" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8235294222831726" green="0.843137264251709" blue="0.23529411852359772" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label alignment="CENTER" layoutX="550.0" layoutY="71.0" prefHeight="40.0" prefWidth="85.0" text="ЖАЖДА">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8218323588371277" green="0.8421052694320679" blue="0.23391813039779663" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8235294222831726" green="0.843137264251709" blue="0.23529411852359772" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label alignment="CENTER" layoutX="267.0" layoutY="71.0" prefHeight="40.0" prefWidth="166.0" text="УДОВОЛЬСТВИЕ">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8218323588371277" green="0.8421052694320679" blue="0.23391813039779663" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8235294222831726" green="0.843137264251709" blue="0.23529411852359772" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="hungerLabel" alignment="CENTER" layoutX="63.0" layoutY="14.0" prefHeight="65.0" prefWidth="85.0" text="30">
+         <font>
+            <Font size="28.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8218323588371277" green="0.8421052694320679" blue="0.23391813039779663" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8235294222831726" green="0.843137264251709" blue="0.23529411852359772" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="thirstLabel" alignment="CENTER" layoutX="550.0" layoutY="14.0" prefHeight="65.0" prefWidth="85.0" text="30">
+         <font>
+            <Font size="28.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8218323588371277" green="0.8421052694320679" blue="0.23391813039779663" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8235294222831726" green="0.843137264251709" blue="0.23529411852359772" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="pleasureLabel" alignment="CENTER" layoutX="306.0" layoutY="14.0" prefHeight="65.0" prefWidth="85.0" text="30">
+         <font>
+            <Font size="28.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8218323588371277" green="0.8421052694320679" blue="0.23391813039779663" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8235294222831726" green="0.843137264251709" blue="0.23529411852359772" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+   </children>
+</AnchorPane>
