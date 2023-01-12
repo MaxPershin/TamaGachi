@@ -67,7 +67,7 @@ public class HomeScreenController implements Initializable {
 
         if (timer != null) {return;}
 
-        mediaPlayer.play();
+        //mediaPlayer.play();
 
         timer = new Timer();
         TimerTask task = new TimerTask() {

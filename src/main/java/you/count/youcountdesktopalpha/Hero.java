@@ -7,6 +7,9 @@ import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Hero {
 
     int is_alive;
@@ -35,17 +38,22 @@ public class Hero {
 
     public void walk(){
 
-        double durationWalk = 0.3;
+        double screenOveralWidth = myBodyView.getScene().getWindow().getWidth();
+        double myPositionOnScreen = myBodyView.getLayoutX()+myBodyView.getTranslateX();
+        double myPositionByMyCenter = (myBodyView.getFitWidth()/2) + myPositionOnScreen;
+
+        double durationWalk = ThreadLocalRandom.current().nextDouble(0.01, 0.15);
+        double myWalkLength = ThreadLocalRandom.current().nextDouble(myPositionByMyCenter*-1, screenOveralWidth-myPositionByMyCenter);
+
         double jumpingComponent = durationWalk/7.5;
 
         TranslateTransition horizontalWalk = new TranslateTransition();
         TranslateTransition verticalJumping = new TranslateTransition();
 
-        horizontalWalk.setByX(200);
+        horizontalWalk.setByX(myWalkLength);
         horizontalWalk.setDuration(Duration.minutes(durationWalk));
         horizontalWalk.setNode(myBodyView);
         horizontalWalk.setAutoReverse(true);
-        horizontalWalk.setCycleCount(2);
         horizontalWalk.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -54,22 +62,31 @@ public class Hero {
             }
         });
 
-
         verticalJumping.setByY(25);
         verticalJumping.setDuration(Duration.minutes(jumpingComponent));
         verticalJumping.setNode(myBodyView);
 
-
         verticalJumping.setAutoReverse(true);
         verticalJumping.setCycleCount(Animation.INDEFINITE);
-
 
         horizontalWalk.play();
         verticalJumping.play();
 
+    }
+
+    public void behave(){
+
+        int chanceOfBehave = ThreadLocalRandom.current().nextInt(0, 200);
+
+        System.out.println(chanceOfBehave);
+
+        if (chanceOfBehave == 0) {
+            move();
+        }
 
 
     }
+
 
     public void move(){
 
@@ -85,6 +102,8 @@ public class Hero {
         thirst--;
         pleasure--;
 
+
+        behave();
         setAlive();
 
     }
