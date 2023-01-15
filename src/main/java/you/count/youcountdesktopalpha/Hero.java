@@ -7,7 +7,6 @@ import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Hero {
@@ -20,6 +19,7 @@ public class Hero {
     int thirst_multiplier = 40;
     int pleasure_multiplier = 60;
 
+    int money;
     ImageView myBodyView;
 
     public Hero() {
@@ -29,6 +29,12 @@ public class Hero {
         hunger = 100* hunger_multiplier;
         thirst = 100* thirst_multiplier;
         pleasure = 100* pleasure_multiplier;
+        money = 300;
+
+        Environment house = new VillageHouse();
+
+        Environment livingPlace = house;
+        Environment currentPlace = house;
 
     }
 
@@ -89,11 +95,9 @@ public class Hero {
 
 
     public void move(){
-
         if (moving == 1) { return; }
         moving = 1;
         walk();
-
     }
 
     public void live(){
@@ -131,4 +135,7 @@ public class Hero {
     public int getPleasure() {
         return pleasure/ pleasure_multiplier;
     }
+
+    public int getMoney(){ return money; }
+
 }

@@ -24,7 +24,7 @@ public class TamaGachi extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(TamaGachi.class.getResource("main_screen.fxml"));
         AnchorPane root = fxmlLoader.load();
 
-        Image image = new Image("image/main_screen_medium.png");
+        Image image = new Image("image/main_menu_background.png");
 
         root.setBackground(new Background(new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
