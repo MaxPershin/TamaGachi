@@ -1,6 +1,8 @@
 package you.count.youcountdesktopalpha;
 
-public class VillageHouse implements Environment{
+import you.count.youcountdesktopalpha.interfaces.Environment;
+
+public class VillageHouse implements Environment {
 
     private String name, description;
     private int temperature, cost;

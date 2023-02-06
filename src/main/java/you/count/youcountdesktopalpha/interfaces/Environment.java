@@ -1,4 +1,4 @@
-package you.count.youcountdesktopalpha;
+package you.count.youcountdesktopalpha.interfaces;
 
 public interface Environment {
 

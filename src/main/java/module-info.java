@@ -7,4 +7,6 @@ module you.count.youcountdesktopalpha {
 
     opens you.count.youcountdesktopalpha to javafx.fxml;
     exports you.count.youcountdesktopalpha;
+    exports you.count.youcountdesktopalpha.interfaces;
+    opens you.count.youcountdesktopalpha.interfaces to javafx.fxml;
 }

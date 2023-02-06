@@ -21,6 +21,7 @@ public class TamaGachi extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+
         FXMLLoader fxmlLoader = new FXMLLoader(TamaGachi.class.getResource("main_screen.fxml"));
         AnchorPane root = fxmlLoader.load();
 

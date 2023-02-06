@@ -1,4 +1,7 @@
 package you.count.youcountdesktopalpha;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import you.count.youcountdesktopalpha.interfaces.Environment;
 
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
@@ -6,7 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import you.count.youcountdesktopalpha.interfaces.Item;
+import you.count.youcountdesktopalpha.items.Borsch;
+import you.count.youcountdesktopalpha.items.BottleOfWater;
 
+import java.net.URISyntaxException;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Hero {
@@ -21,8 +28,15 @@ public class Hero {
 
     int money;
     ImageView myBodyView;
+    MediaPlayer heroVoice;
 
-    public Hero() {
+    public Inventory inventory;
+
+    public static Hero staticHero;
+
+    public Hero() throws URISyntaxException {
+
+        staticHero = this;
 
         is_alive = 1;
         moving = 0;
@@ -31,10 +45,18 @@ public class Hero {
         pleasure = 100* pleasure_multiplier;
         money = 300;
 
+        inventory = new Inventory();
+
+        inventory.addItem(new Borsch());
+        inventory.addItem(new BottleOfWater());
+        inventory.addItem(new Borsch());
+
         Environment house = new VillageHouse();
 
         Environment livingPlace = house;
         Environment currentPlace = house;
+
+
 
     }
 
@@ -93,7 +115,6 @@ public class Hero {
 
     }
 
-
     public void move(){
         if (moving == 1) { return; }
         moving = 1;
@@ -118,11 +139,31 @@ public class Hero {
         }
     }
 
-    public void eat(int amount){ hunger+=amount* hunger_multiplier; }
+    public void playConsumeSound(Item item){
 
-    public void drink(int amount){ thirst+=amount* thirst_multiplier; }
+        heroVoice = new MediaPlayer(item.getMedia());
+        heroVoice.setVolume(0.7);
+        heroVoice.play();
 
-    public void receivePleasure(int amount){ pleasure+=amount* pleasure_multiplier; }
+    }
+
+    public void consume(Item item) {
+
+        playConsumeSound(item);
+
+        hunger+=item.getFoodSupply()*hunger_multiplier;
+        thirst+=item.getWaterSupply()*thirst_multiplier;
+        pleasure+=item.getPleasureSupply()*pleasure_multiplier;
+
+        inventory.inventoryItems.remove(item);
+
+        if (hunger > 100*hunger_multiplier){hunger = 100*hunger_multiplier;}
+        if (thirst > 100*thirst_multiplier){thirst = 100*thirst_multiplier;}
+        if (pleasure > 100*pleasure_multiplier){pleasure = 100*pleasure_multiplier;}
+
+
+    }
+
 
     public int getHunger() {
         return hunger/ hunger_multiplier;

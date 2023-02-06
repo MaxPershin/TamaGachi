@@ -1,13 +1,9 @@
 package you.count.youcountdesktopalpha;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -16,10 +12,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Paint;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
 
 
 import java.io.IOException;
@@ -35,8 +27,6 @@ public class HomeScreenController implements Initializable {
     Timer timer;
     MediaPlayer mediaPlayer;
     AnchorPane storePane;
-
-    int mainMenuOpen = 0;
 
     @FXML AnchorPane homeScreenPane;
     @FXML HBox moneyPane;
@@ -54,7 +44,13 @@ public class HomeScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //Hero creation
-        hero = new Hero();
+        try {
+            hero = new Hero();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+
         hero.setBodyImage(mainCharImage);
 
         Image image = new Image("image/billy.png");
@@ -68,6 +64,7 @@ public class HomeScreenController implements Initializable {
             Media music = new Media(getClass().getResource("/music/main_theme.mp3").toURI().toString());
             mediaPlayer = new MediaPlayer(music);
             mediaPlayer.setVolume(0.2);
+            mediaPlayer.play();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -81,6 +78,8 @@ public class HomeScreenController implements Initializable {
 
         settingUpListeners();
 
+        startLifeCycle();
+
     }
 
     public void settingUpListeners(){
@@ -90,8 +89,8 @@ public class HomeScreenController implements Initializable {
             public void handle(MouseEvent event) {
 
                 try {
-                    showStore();
-                } catch (IOException e) {
+                    showInventory();
+                } catch (IOException | URISyntaxException e) {
                     throw new RuntimeException(e);
                 }
 
@@ -102,8 +101,8 @@ public class HomeScreenController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 try {
-                    showStore();
-                } catch (IOException e) {
+                    showInventory();
+                } catch (IOException | URISyntaxException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -111,50 +110,16 @@ public class HomeScreenController implements Initializable {
 
     }
 
-    public void feedHero(){ hero.eat(15); }
-    public void drinkHero(){ hero.drink(16); }
-    public void pleaseHero(){ hero.receivePleasure(8); }
 
-    public void showStore() throws IOException {
+    public void showInventory() throws IOException, URISyntaxException {
 
-        if (mainMenuOpen == 1) {
-
-            homeScreenPane.getChildren().remove(storePane);
-            mainMenuOpen = 0;
-            return; }
-
-
-
-
-//        Label testLabel = new Label();
-//        testLabel.setText("TEST STORE STRING");
-//
-//        storePane = new AnchorPane();
-//        storePane.setPrefSize(500, 500);
-//        storePane.setStyle("-fx-background-color: blue");
-//        storePane.getChildren().addAll(testLabel);
-//
-        FXMLLoader fxmlLoader = new FXMLLoader(TamaGachi.class.getResource("storeMenuDirectory/storeMenu.fxml"));
-        storePane = fxmlLoader.load();
-
-        homeScreenPane.getChildren().addAll(storePane);
-
-        double parentWidth = homeScreenPane.getWidth();
-        double parentHeight = homeScreenPane.getHeight();
-
-        storePane.setLayoutX(parentWidth/2-(storePane.getPrefWidth()/2));
-        storePane.setLayoutY(parentHeight/2-(storePane.getPrefHeight()/2));
-
-        mainMenuOpen = 1;
+        hero.inventory.showInventory(homeScreenPane);
 
     }
 
-    public void heroMove(){
-        hero.move();
-    }
 
     //Life cycle of main Char - this methods has cycle inside
-    public void startLifeCycle(ActionEvent event){
+    public void startLifeCycle(){
 
         moneyLabel.setText(String.valueOf(hero.getMoney()));
 
@@ -169,7 +134,11 @@ public class HomeScreenController implements Initializable {
                     //heroMove();
                     hero.live();
                     //DEATH
+                    if (hero.is_alive == 0){
 
+
+
+                    }
                     hungerProgressBar.setProgress((double) hero.getHunger()/100);
                     thirstProgressBar.setProgress((double) hero.getThirst()/100);
                     pleasureProgressBar.setProgress((double) hero.getPleasure()/100);

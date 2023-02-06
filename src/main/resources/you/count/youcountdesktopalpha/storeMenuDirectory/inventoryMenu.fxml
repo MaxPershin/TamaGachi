@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="you.count.youcountdesktopalpha.InventoryController">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" layoutY="48.0" prefHeight="625.0" prefWidth="622.0" vbarPolicy="NEVER">
+         <content>
+            <TilePane fx:id="tilePane" hgap="3.0" prefHeight="628.0" prefWidth="622.0" style="-fx-background-color: grey;" vgap="10.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></TilePane>
+         </content>
+      </ScrollPane>
+      <Label layoutX="200.0" layoutY="3.0" text="ИНВЕНТАРЬ">
+         <font>
+            <Font name="DejaVu Sans Bold" size="32.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

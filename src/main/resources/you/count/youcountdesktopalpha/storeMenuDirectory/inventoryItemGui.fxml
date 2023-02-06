@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="130.0" style="-fx-background-color: #43ABC9;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="you.count.youcountdesktopalpha.InventoryItemController">
+   <children>
+      <Button layoutY="119.0" mnemonicParsing="false" onAction="#consume" prefHeight="34.0" prefWidth="130.0" text="УПОТРЕБИТЬ" />
+      <Label fx:id="mainLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="3.0" prefHeight="22.0" prefWidth="139.0" text="Борщик" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="DejaVu Sans Bold" size="10.0" />
+         </font></Label>
+      <Label fx:id="waterLabel" alignment="CENTER" layoutX="20.0" layoutY="96.0" text="0" />
+      <Label fx:id="foodLabel" alignment="CENTER" layoutX="62.0" layoutY="96.0" text="0" />
+      <Label fx:id="pleasureLabel" alignment="CENTER" layoutX="100.0" layoutY="96.0" text="0" />
+      <ImageView fx:id="itemImageView" fitHeight="70.0" fitWidth="130.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</AnchorPane>
