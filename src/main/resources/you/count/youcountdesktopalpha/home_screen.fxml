@@ -9,6 +9,7 @@
 
 <AnchorPane fx:id="homeScreenPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="875.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="you.count.youcountdesktopalpha.HomeScreenController">
    <children>
+      <ImageView fx:id="backgroundHomeScreen" fitHeight="908.0" fitWidth="1700.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;" />
       <ImageView fx:id="mainCharImage" fitHeight="696.0" fitWidth="487.0" layoutX="607.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
       <HBox fx:id="moneyPane" layoutX="1421.0" layoutY="18.0" prefHeight="80.0" prefWidth="235.0" style="-fx-background-color: hotpink;">
          <children>
@@ -33,7 +34,6 @@
             <ProgressBar fx:id="hungerProgressBar" layoutX="13.0" layoutY="21.0" prefHeight="18.0" prefWidth="200.0" progress="0.3" style="-fx-accent: green;" />
             <ProgressBar fx:id="healthProgressBar" layoutX="13.0" layoutY="1.0" prefHeight="18.0" prefWidth="200.0" progress="0.41" style="-fx-accent: red;" />
             <ProgressBar fx:id="thirstProgressBar" layoutX="14.0" layoutY="61.0" prefHeight="18.0" prefWidth="200.0" progress="0.16" />
-            <ImageView fx:id="backgroundHomeScreen" fitHeight="908.0" fitWidth="940.0" layoutX="-674.0" layoutY="-382.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.2;" />
          </children>
       </AnchorPane>
       <ImageView fx:id="houseIcon" fitHeight="80.0" fitWidth="80.0" layoutX="1576.0" layoutY="761.0" pickOnBounds="true" preserveRatio="true" />
